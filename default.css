@@ -1,0 +1,16 @@
+A:link { text-decoration: none }
+A:active { text-decoration: none }
+A:visited { text-decoration: none }
+A:hover { text-decoration: underline }
+
+body { 
+scrollbar-face-color:#2364A8;
+scrollbar-track-color:black;
+scrollbar-shadow-color: black;
+scrollbar-highlight-color:white;
+scrollbar-3dlight-color:white;
+scrollbar-darkshadow-Color:black;
+scrollbar-arrow-color:white;
+}
+
+body {background-color:black;}

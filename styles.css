@@ -1,0 +1,13 @@
+p {font-family:"Arial"; color: #8D8D8D}
+
+a {color: #B257F9; text-decoration: none}
+
+body {
+	scrollbar-face-color:#D2A1F7;
+	scrollbar-track-color:#909090;
+	scrollbar-shadow-color: black;
+	scrollbar-highlight-color:white;
+	scrollbar-3dlight-color:white;
+	scrollbar-darkshadow-Color:#909090;
+	scrollbar-arrow-color:#909090;
+}

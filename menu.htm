@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<link rel=stylesheet href="styles.css" type="text/css">
+<META NAME="Author" CONTENT="Josh">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<TITLE>	Menu	</TITLE>
+<base target="main">
+</HEAD>
+<BODY>
+
+<IMG NAME="menu0" SRC="menu.jpg" width="150" height="350" BORDER="0" USEMAP="#menu">
+
+<MAP NAME="menu">
+<AREA shape="rect" coords="10, 32, 138, 62" HREF="wedding.htm" ALT="About the Wedding" target="main">
+<AREA shape="rect" coords="27, 78, 122, 101" HREF="registries.htm" ALT="Where we are registered" target="main">
+<AREA shape="rect" coords="29, 124, 119, 146" HREF="location.htm" TARGET="main" ALT="How to get to the Wedding">
+<AREA shape="rect" coords="22, 166, 126, 192" HREF="about.htm" ALT="All about us" target="main">
+<AREA shape="rect" coords="18, 211, 132, 236" HREF="contact.htm" ALT="How to get in touch" target="main">
+<AREA shape="rect" coords="8, 277, 143, 315" HREF="http://www.ezclick.net" TARGET="_blank" ALT="Thanks EZClick!">
+</MAP>
+
+<br>
+<br>
+<br>
+
+<!--Cut here -->
+
+
+ <table border="0" cellspacing="0" cellpadding="0" bgcolor="#000000">
+  <tr>
+    <td><font color="#FFFFFF" face="Arial, Helvetica, sans-serif" size="2"><b>
+<?php
+      	
+//  Simple PHP Counter 1.1
+//  Author: Chi Kien Uong
+//  URL: http://www.proxy2.de
+
+//  - chmod this document to 755! -
+	
+$padding =6; // How many digits to show
+$fpt = "counter.txt"; // path to log file - chmod it to 666
+
+// optional configuration settings
+
+$lock_ip =0; // IP locking (counter doesn't increments when page is reloaded) 1=yes 0=no
+$ip_lock_timeout =30; // in minutes      
+$fpt_ip = "ip.txt"; // path to IP log file - chmod it to 666
+
+// end configuration
+
+function checkIP($rem_addr) {
+  global $fpt_ip,$ip_lock_timeout;
+  $ip_array = file($fpt_ip);
+  $reload_dat = fopen($fpt_ip,"w");
+  $this_time = time();
+  for ($i=0; $i<sizeof($ip_array); $i++) {
+    list($ip_addr,$time_stamp) = split("\|",$ip_array[$i]);
+    if ($this_time < ($time_stamp+60*$ip_lock_timeout)) {
+      if ($ip_addr == $rem_addr) {
+        $found=1;
+      }
+      else {
+        fwrite($reload_dat,"$ip_addr|$time_stamp");
+      }
+    }
+  }
+  fwrite($reload_dat,"$rem_addr|$this_time\n");
+  fclose($reload_dat);
+  return ($found==1) ? 1 : 0;
+}
+
+if (!file_exists($fpt)) {
+  $count_dat = fopen($fpt,"w+");
+  $count = 1;
+  fwrite($count_dat,$count);
+  fclose($count_dat);
+}
+else {
+  $line = file($fpt);
+  $count = $line[0];
+  if ($lock_ip==0 || ($lock_ip==1 && checkIP($REMOTE_ADDR)==0)) {
+    $count_dat = fopen($fpt,"r+");
+    $count++;
+    fwrite($count_dat,$count);
+    fclose($count_dat);
+  }
+}
+echo sprintf ("%0"."$padding"."d",$count);
+
+   ?></b></font></td>
+  </tr>
+ </table>
+
+<!--Cut here -->
+
+
+
+</BODY>
+</HTML>
